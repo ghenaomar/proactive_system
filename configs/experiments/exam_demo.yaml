@@ -1,0 +1,27 @@
+exp_name: exam_demo
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/dev_fake.yaml
+  - configs/zones/exam_hall_px.yaml
+
+system:
+  max_frames: 300
+
+models:
+  person_detector:
+    name: torchvision
+    model: ssdlite320_mobilenet_v3_large
+    weights: DEFAULT
+    score_thresh: 0.5
+  tracker:
+    name: iou
+    iou_threshold: 0.3
+    max_age: 10
+
+events:
+  presence:
+    emit_initial: true
+    enter_frames: 3
+    exit_frames: 10

@@ -1,0 +1,18 @@
+models:
+  person_detector:
+    # New detector that does NOT need external weights.
+    name: mediapipe_pose
+    model_complexity: 1
+    min_detection_confidence: 0.5
+    min_tracking_confidence: 0.5
+    min_visibility: 0.5
+    min_landmarks: 8
+    pad_frac: 0.08
+    pad_y_extra: 0.04
+    # input_color: rgb  # imageio default
+
+  tracker:
+    name: iou
+    start_id: 1
+    iou_threshold: 0.3
+    max_age: 15

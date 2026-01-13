@@ -1,0 +1,3 @@
+system:
+  presence_enter_frames: 3
+  presence_exit_frames: 10

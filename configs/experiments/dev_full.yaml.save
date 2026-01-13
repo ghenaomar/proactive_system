@@ -1,0 +1,11 @@
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/dev_fake.yaml
+configs/zones/exam_demo_zones.yaml
+exp_name: dev_full
+
+system:
+  seed: 1
+  max_frames: 50
+  assumed_fps: 30

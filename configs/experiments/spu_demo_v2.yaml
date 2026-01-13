@@ -1,0 +1,34 @@
+# SPU Demo V2 - with smaller zones
+exp_name: spu_demo_v2
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/yolov8_bytetrack.yaml
+  - configs/zones/spu_demo_v2.yaml
+
+students_auto_from_zones: true
+
+system:
+  max_frames: 500
+  assumed_fps: 25.0
+
+features:
+  mediapipe:
+    enabled: true
+    dynamic_roi: true
+    dynamic_roi_mode: upper_body
+    dynamic_roi_clip_to_zone: false  # IMPORTANT: لا نحصر ROI بالـ zone!
+    enable_head_turn: true
+    enable_pose_turn: true
+    min_face_px: 12.0
+    min_face_px_pose: 10.0
+    pose_yaw_scale: 1.0
+    yaw_on: 0.05
+    yaw_full: 0.12
+
+events:
+  presence:
+    emit_initial: true
+    enter_frames: 3
+    exit_frames: 10

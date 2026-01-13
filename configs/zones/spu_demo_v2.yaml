@@ -1,0 +1,74 @@
+meta:
+  source: data/raw/SPU_DEMO.mp4
+  width: 3840
+  height: 2160
+  zones: 8
+
+zones:
+  zones:
+  - id: seat_1
+    bbox:
+    - 129
+    - 1120
+    - 561
+    - 1529
+  - id: seat_2
+    bbox:
+    - 1513
+    - 1215
+    - 1936
+    - 1632
+  - id: seat_3
+    bbox:
+    - 3334
+    - 973
+    - 3792
+    - 1542
+  - id: seat_4
+    bbox:
+    - 580
+    - 698
+    - 920
+    - 1061
+  - id: seat_5
+    bbox:
+    - 2735
+    - 519
+    - 3012
+    - 746
+  - id: seat_6
+    bbox:
+    - 2940
+    - 678
+    - 3172
+    - 1114
+  - id: seat_7
+    bbox:
+    - 1793
+    - 366
+    - 2004
+    - 514
+  - id: seat_8
+    bbox:
+    - 1702
+    - 481
+    - 1878
+    - 767
+
+students:
+- id: s1
+  zone_id: seat_1
+- id: s2
+  zone_id: seat_2
+- id: s3
+  zone_id: seat_3
+- id: s4
+  zone_id: seat_4
+- id: s5
+  zone_id: seat_5
+- id: s6
+  zone_id: seat_6
+- id: s7
+  zone_id: seat_7
+- id: s8
+  zone_id: seat_8

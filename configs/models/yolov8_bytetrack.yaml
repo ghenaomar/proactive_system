@@ -1,0 +1,66 @@
+# YOLOv8 + ByteTrack Configuration
+#
+# This configuration provides state-of-the-art detection and tracking
+# for exam proctoring scenarios. Recommended for production use.
+#
+# Performance Comparison vs. FasterRCNN + IoU Tracker:
+#   - Detection Speed: 5-10x faster
+#   - Tracking Stability: Significantly improved ID consistency
+#   - Occlusion Handling: Better recovery from temporary occlusions
+#
+# Requirements:
+#   pip install ultralytics supervision
+
+models:
+  person_detector:
+    name: yolov8
+    
+    # Model variant selection (trade-off: speed vs. accuracy)
+    # Options: yolov8n.pt, yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
+    model: yolov8s.pt
+    
+    # Computation device: cuda, cpu, or auto (recommended)
+    device: auto
+    
+    # Detection confidence threshold [0.0, 1.0]
+    # Lower values increase recall but may introduce false positives
+    # Lowered from 0.5 to 0.25 to catch occluded persons
+    conf: 0.25
+    
+    # Non-Maximum Suppression IoU threshold
+    # Controls overlap tolerance between detections
+    iou: 0.45
+    
+    # Maximum detections per frame
+    max_detections: 30
+    
+    # COCO dataset class ID for 'person'
+    person_class_id: 0
+    
+    # Input image size for inference
+    # Larger sizes improve accuracy but reduce speed
+    imgsz: 640
+
+  tracker:
+    name: bytetrack
+    
+    # Minimum confidence to initialize new tracks
+    # Lower value = more tracks created faster
+    # Lowered from 0.20 to 0.15 for better detection of partially visible persons
+    track_activation_threshold: 0.15
+    
+    # Number of frames to retain lost tracks
+    # Higher = better recovery from occlusions (important for close people)
+    # Increased from 50 to 75 for better recovery when person is temporarily hidden
+    lost_track_buffer: 75
+    
+    # IoU threshold for track-detection association
+    # LOWER = more "sticky" IDs, less switching between close people
+    # Adjusted to 0.4 for even more stable IDs with close persons
+    minimum_matching_threshold: 0.4
+    
+    # Video frame rate for internal Kalman filter
+    frame_rate: 25
+    
+    # Initial track ID value
+    start_id: 1

@@ -1,0 +1,51 @@
+zones:
+  zones:
+  - id: seat_1
+    bbox:
+    - 76
+    - 375
+    - 323
+    - 540
+  - id: seat_2
+    bbox:
+    - 204
+    - 273
+    - 368
+    - 402
+  - id: seat_3
+    bbox:
+    - 474
+    - 462
+    - 713
+    - 649
+  - id: seat_4
+    bbox:
+    - 684
+    - 219
+    - 867
+    - 368
+  - id: seat_5
+    bbox:
+    - 998
+    - 407
+    - 1177
+    - 638
+  - id: seat_6
+    bbox:
+    - 494
+    - 209
+    - 654
+    - 354
+students:
+- id: s1
+  zone_id: seat_1
+- id: s2
+  zone_id: seat_2
+- id: s3
+  zone_id: seat_3
+- id: s4
+  zone_id: seat_4
+- id: s5
+  zone_id: seat_5
+- id: s6
+  zone_id: seat_6

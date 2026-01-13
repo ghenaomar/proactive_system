@@ -1,0 +1,38 @@
+# SPU Demo Configuration - Zone Tracker Version
+# Uses zone-anchored tracking for stable IDs in seated scenarios
+
+exp_name: spu_demo_zone
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/yolov8_zone.yaml
+  - configs/zones/spu_demo.yaml
+
+# Auto-generate students from zones
+students_auto_from_zones: true
+
+system:
+  # Process only first 20 seconds (20 * 25 = 500 frames at 25 FPS)
+  max_frames: 500
+  assumed_fps: 25.0
+
+features:
+  mediapipe:
+    enabled: true
+    dynamic_roi: true
+    dynamic_roi_mode: upper_body
+    dynamic_roi_clip_to_zone: true
+    enable_head_turn: true
+    enable_pose_turn: true
+    min_face_px: 12.0
+    min_face_px_pose: 10.0
+    pose_yaw_scale: 1.0
+    yaw_on: 0.05
+    yaw_full: 0.12
+
+events:
+  presence:
+    emit_initial: true
+    enter_frames: 3
+    exit_frames: 10

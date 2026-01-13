@@ -1,0 +1,51 @@
+# Auto Tracking Configuration - NO ZONES NEEDED!
+#
+# This config uses YOLO + ByteTrack to automatically detect
+# and track every person in the video. No manual zone drawing required.
+#
+# How it works:
+#   1. YOLO detects all persons → gives each a bounding box
+#   2. ByteTrack tracks them → assigns persistent track_id (s1, s2...)
+#   3. MediaPipe extracts features for each tracked person
+#   4. Identity is determined separately using InsightFace
+
+exp_name: auto_tracking
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/yolov8_bytetrack.yaml
+
+# NO zones file needed! System auto-detects everyone
+# students_auto_from_zones: false
+
+# Auto-create student entries from detected tracks
+auto_students_from_tracks: true
+
+system:
+  max_frames: 600
+  assumed_fps: 30.0
+
+features:
+  mediapipe:
+    enabled: true
+    dynamic_roi: true
+    dynamic_roi_mode: upper_body
+    dynamic_roi_clip_to_zone: false
+    enable_head_turn: true
+    enable_pose_turn: true
+    min_face_px: 10.0
+    min_face_px_pose: 8.0
+    pose_yaw_scale: 1.0
+    yaw_on: 0.05
+    yaw_full: 0.12
+
+events:
+  presence:
+    emit_initial: true
+    enter_frames: 3
+    exit_frames: 10
+
+models:
+  person_detector:
+    score_thresh: 0.45

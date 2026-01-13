@@ -1,0 +1,12 @@
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/torchvision_iou.yaml
+  - configs/zones/dev_zones.yaml
+
+exp_name: dev_real
+
+system:
+  seed: 1
+  max_frames: 200
+  assumed_fps: 30

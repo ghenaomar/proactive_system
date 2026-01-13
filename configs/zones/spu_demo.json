@@ -1,0 +1,53 @@
+{
+    "zones": [
+        {
+            "id": "seat1",
+            "label": "Seat 1 - Front Left",
+            "bbox": [50, 400, 250, 650],
+            "normalized": false
+        },
+        {
+            "id": "seat2",
+            "label": "Seat 2 - Front Center-Left",
+            "bbox": [200, 300, 400, 550],
+            "normalized": false
+        },
+        {
+            "id": "seat3",
+            "label": "Seat 3 - Front Center",
+            "bbox": [450, 350, 650, 600],
+            "normalized": false
+        },
+        {
+            "id": "seat4",
+            "label": "Seat 4 - Front Right",
+            "bbox": [850, 200, 1050, 450],
+            "normalized": false
+        },
+        {
+            "id": "seat5",
+            "label": "Seat 5 - Middle Right",
+            "bbox": [1000, 180, 1200, 420],
+            "normalized": false
+        },
+        {
+            "id": "seat6",
+            "label": "Seat 6 - Back Left",
+            "bbox": [500, 150, 700, 350],
+            "normalized": false
+        },
+        {
+            "id": "seat7",
+            "label": "Seat 7 - Bottom Center",
+            "bbox": [550, 500, 750, 750],
+            "normalized": false
+        },
+        {
+            "id": "seat8",
+            "label": "Seat 8 - Bottom Right",
+            "bbox": [950, 450, 1200, 700],
+            "normalized": false
+        }
+    ],
+    "_note": "Approximate zones - may need adjustment. Format: [x1, y1, x2, y2] in pixels"
+}

@@ -1,0 +1,12 @@
+zones:
+  zones:
+    - id: left
+      bbox: [0, 0, 640, 720]
+    - id: right
+      bbox: [640, 0, 1280, 720]
+
+students:
+  - id: s_left
+    zone_id: left
+  - id: s_right
+    zone_id: right

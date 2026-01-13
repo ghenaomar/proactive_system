@@ -1,0 +1,56 @@
+# Exam Hall Configuration with YOLOv8 + ByteTrack
+#
+# This is the recommended configuration for exam proctoring using
+# state-of-the-art detection and tracking models.
+#
+# Usage:
+#   proctor-ai run --config configs/experiments/exam_hall_yolo.yaml --input video.mp4
+
+exp_name: exam_hall_yolo
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/yolov8_bytetrack.yaml
+  - configs/zones/examhall_px.yaml
+
+# Automatically generate student IDs from zone definitions
+students_auto_from_zones: true
+
+system:
+  # Maximum frames to process (null = entire video)
+  max_frames: null
+  
+  # Assumed frame rate for timestamp calculations
+  assumed_fps: 25.0
+
+features:
+  mediapipe:
+    enabled: true
+    
+    # Dynamic ROI: Track bounding box follows the tracker
+    dynamic_roi: true
+    dynamic_roi_mode: upper_body
+    dynamic_roi_clip_to_zone: true
+    
+    # Head pose estimation for gaze detection
+    enable_head_turn: true
+    enable_pose_turn: true
+    
+    # Minimum face size thresholds (pixels)
+    min_face_px: 12.0
+    min_face_px_pose: 10.0
+    
+    # Yaw angle detection parameters
+    pose_yaw_scale: 1.0
+    yaw_on: 0.05
+    yaw_full: 0.12
+
+events:
+  presence:
+    # Emit initial presence state for each student
+    emit_initial: true
+    
+    # Debounce thresholds for state transitions
+    enter_frames: 3
+    exit_frames: 10

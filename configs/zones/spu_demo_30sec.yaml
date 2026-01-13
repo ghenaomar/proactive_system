@@ -1,0 +1,72 @@
+meta:
+  source: frame_500.jpg
+  width: 3840
+  height: 2160
+  zones: 8
+zones:
+  zones:
+  - id: seat_1
+    bbox:
+    - 198
+    - 989
+    - 586
+    - 1445
+  - id: seat_2
+    bbox:
+    - 1553
+    - 1162
+    - 2180
+    - 1478
+  - id: seat_3
+    bbox:
+    - 3360
+    - 989
+    - 3763
+    - 1562
+  - id: seat_4
+    bbox:
+    - 604
+    - 541
+    - 1071
+    - 888
+  - id: seat_5
+    bbox:
+    - 1803
+    - 318
+    - 1935
+    - 642
+  - id: seat_6
+    bbox:
+    - 3075
+    - 625
+    - 3335
+    - 997
+  - id: seat_7
+    bbox:
+    - 1828
+    - 153
+    - 2147
+    - 317
+  - id: seat_8
+    bbox:
+    - 2804
+    - 376
+    - 3106
+    - 610
+students:
+- id: s1
+  zone_id: seat_1
+- id: s2
+  zone_id: seat_2
+- id: s3
+  zone_id: seat_3
+- id: s4
+  zone_id: seat_4
+- id: s5
+  zone_id: seat_5
+- id: s6
+  zone_id: seat_6
+- id: s7
+  zone_id: seat_7
+- id: s8
+  zone_id: seat_8

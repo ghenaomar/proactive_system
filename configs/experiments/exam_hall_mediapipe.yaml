@@ -1,0 +1,48 @@
+exp_name: exam_hall_mediapipe
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/torchvision_iou.yaml
+  # UPDATED: use your new zones file (7 seats)
+  - configs/zones/examhall_px.yaml
+
+# If you don't have student IDs mapped yet, enable this to treat each zone as a
+# pseudo student (student_id == zone_id). This keeps the pipeline running.
+students_auto_from_zones: true
+
+system:
+  # set to null to process whole video
+  max_frames: 1200
+  assumed_fps: 25.0
+
+features:
+  mediapipe:
+    enabled: true
+    # IMPORTANT for exam halls: track-following crop improves face stability
+    dynamic_roi: true
+    dynamic_roi_mode: upper_body
+    dynamic_roi_clip_to_zone: true
+
+    enable_head_turn: true
+    enable_pose_turn: true
+
+    # (اختياري لكن غالباً ضروري بالـ CCTV البعيد)
+    min_face_px: 12.0
+    min_face_px_pose: 0.30
+
+    # pose yaw كان عم ينضغط كثير (افتراضياً 0.30)، هيك بصير ما يوصل للعتبات
+    pose_yaw_scale: 1.0
+    yaw_on: 0.05
+    yaw_full: 0.12
+    
+models:
+  # Override detector thresholds if needed for far cameras
+  person_detector:
+    score_thresh: 0.4
+
+events:
+  presence:
+    emit_initial: true
+    enter_frames: 3
+    exit_frames: 10

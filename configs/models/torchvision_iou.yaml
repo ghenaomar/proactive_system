@@ -1,0 +1,15 @@
+models:
+  person_detector:
+    name: torchvision
+    model: fasterrcnn_resnet50_fpn
+    device: cuda
+    conf: 0.6
+    max_detections: 30
+    person_class_id: 1
+    load_weights: true
+
+  tracker:
+    name: iou
+    start_id: 1
+    iou_threshold: 0.3
+    max_age: 30

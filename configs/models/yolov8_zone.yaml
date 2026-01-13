@@ -1,0 +1,58 @@
+# YOLOv8 + Zone Tracker Configuration
+#
+# Zone-anchored tracking for seated exam scenarios.
+# Instead of tracking "moving persons", tracks "seat occupants".
+#
+# Key benefits:
+#   - Stable IDs tied to seats (no ID switching)
+#   - Handles occlusions gracefully (head down, temporary hiding)
+#   - No false tracks from people walking outside zones
+#
+# Requirements:
+#   pip install ultralytics
+
+models:
+  person_detector:
+    name: yolov8
+    
+    # Model variant (yolov8s is good balance)
+    model: yolov8s.pt
+    
+    device: auto
+    
+    # Detection confidence threshold
+    # Lower threshold to catch occluded persons
+    conf: 0.25
+    
+    # NMS IoU threshold
+    iou: 0.45
+    
+    max_detections: 30
+    person_class_id: 0
+    imgsz: 640
+
+  tracker:
+    name: zone
+    
+    # Maximum frames to keep track alive without detection
+    # Higher = better recovery from head down / occlusion
+    max_lost_frames: 100  # Increased from 75
+    
+    # Minimum IoU overlap for detection to be "in zone"
+    # Lowered to 0.15 for better matching with CCTV angles
+    zone_overlap_threshold: 0.15
+    
+    # Bbox smoothing factor (EMA)
+    # 0.0 = no smoothing, 1.0 = full smoothing
+    smoothing_alpha: 0.6
+    
+    # Gravity strength towards zone center when predicting
+    # Small value (0.05) means gentle pull back to seat
+    gravity_strength: 0.03
+    
+    # NEW: More lenient matching options
+    # Also match if detection center is inside zone (expanded by 20%)
+    use_center_match: true
+    
+    # Use zone bbox as fallback when detection lost but person was seen before
+    use_zone_fallback: true

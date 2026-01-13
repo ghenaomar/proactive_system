@@ -1,0 +1,60 @@
+# YOLOv8 + DeepSORT Configuration
+#
+# DeepSORT uses appearance features (Re-ID) for more robust tracking
+# when people are close together or partially occluded.
+#
+# Trade-offs vs ByteTrack:
+#   - Better ID preservation for close-sitting students
+#   - More robust to occlusion
+#   - Slower (needs Re-ID inference)
+#
+# Requirements:
+#   pip install ultralytics deep-sort-realtime
+
+models:
+  person_detector:
+    name: yolov8
+    
+    # Model variant (yolov8s is good balance)
+    model: yolov8s.pt
+    
+    device: auto
+    
+    # Detection confidence threshold
+    # Lowered to 0.25 for better detection of occluded persons
+    conf: 0.25
+    
+    # NMS IoU threshold
+    iou: 0.45
+    
+    max_detections: 30
+    person_class_id: 0
+    imgsz: 640
+
+  tracker:
+    name: deepsort
+    
+    # Number of frames to keep track without detection
+    # Higher = better recovery from brief occlusions
+    # Increased to 75 for better handling of temporary occlusions
+    max_age: 75
+    
+    # Frames needed to confirm a new track
+    # Lower = faster confirmation, but more false tracks
+    n_init: 3
+    
+    # Max IoU distance for matching (0.0 = exact overlap, 1.0 = no overlap)
+    # Higher = more lenient matching
+    # Lowered to 0.6 for stricter spatial matching (prevent ID swaps)
+    max_iou_distance: 0.6
+    
+    # Max cosine distance for appearance matching
+    # Lower = stricter appearance matching
+    # Lowered to 0.2 for better distinction between close-sitting students
+    max_cosine_distance: 0.2
+    
+    # Max samples in appearance gallery per track
+    nn_budget: 100
+    
+    # Initial track ID
+    start_id: 1

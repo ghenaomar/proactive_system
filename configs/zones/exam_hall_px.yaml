@@ -1,0 +1,182 @@
+zones:
+  zones:
+  - id: seat_1
+    bbox:
+    - 3
+    - 531
+    - 197
+    - 665
+  - id: seat_2
+    bbox:
+    - 515
+    - 469
+    - 680
+    - 630
+  - id: seat_3
+    bbox:
+    - 1039
+    - 396
+    - 1150
+    - 554
+  - id: seat_4
+    bbox:
+    - 88
+    - 390
+    - 292
+    - 520
+  - id: seat_5
+    bbox:
+    - 487
+    - 324
+    - 623
+    - 465
+  - id: seat_6
+    bbox:
+    - 896
+    - 346
+    - 1037
+    - 472
+  - id: seat_7
+    bbox:
+    - 202
+    - 283
+    - 335
+    - 381
+  - id: seat_8
+    bbox:
+    - 9
+    - 197
+    - 123
+    - 287
+  - id: seat_9
+    bbox:
+    - 80
+    - 151
+    - 169
+    - 202
+  - id: seat_10
+    bbox:
+    - 175
+    - 69
+    - 282
+    - 176
+  - id: seat_11
+    bbox:
+    - 270
+    - 192
+    - 383
+    - 274
+  - id: seat_12
+    bbox:
+    - 331
+    - 145
+    - 413
+    - 194
+  - id: seat_13
+    bbox:
+    - 387
+    - 105
+    - 467
+    - 149
+  - id: seat_14
+    bbox:
+    - 389
+    - 56
+    - 485
+    - 104
+  - id: seat_15
+    bbox:
+    - 504
+    - 223
+    - 622
+    - 324
+  - id: seat_16
+    bbox:
+    - 698
+    - 242
+    - 841
+    - 364
+  - id: seat_17
+    bbox:
+    - 886
+    - 261
+    - 999
+    - 342
+  - id: seat_18
+    bbox:
+    - 574
+    - 155
+    - 657
+    - 221
+  - id: seat_19
+    bbox:
+    - 848
+    - 184
+    - 952
+    - 255
+  - id: seat_20
+    bbox:
+    - 593
+    - 73
+    - 664
+    - 117
+  - id: seat_21
+    bbox:
+    - 812
+    - 94
+    - 891
+    - 140
+  - id: seat_22
+    bbox:
+    - 864
+    - 147
+    - 932
+    - 187
+students:
+- id: s1
+  zone_id: seat_1
+- id: s2
+  zone_id: seat_2
+- id: s3
+  zone_id: seat_3
+- id: s4
+  zone_id: seat_4
+- id: s5
+  zone_id: seat_5
+- id: s6
+  zone_id: seat_6
+- id: s7
+  zone_id: seat_7
+- id: s8
+  zone_id: seat_8
+- id: s9
+  zone_id: seat_9
+- id: s10
+  zone_id: seat_10
+- id: s11
+  zone_id: seat_11
+- id: s12
+  zone_id: seat_12
+- id: s13
+  zone_id: seat_13
+- id: s14
+  zone_id: seat_14
+- id: s15
+  zone_id: seat_15
+- id: s16
+  zone_id: seat_16
+- id: s17
+  zone_id: seat_17
+- id: s18
+  zone_id: seat_18
+- id: s19
+  zone_id: seat_19
+- id: s20
+  zone_id: seat_20
+- id: s21
+  zone_id: seat_21
+- id: s22
+  zone_id: seat_22
+meta:
+  frame_width: 1280
+  frame_height: 720

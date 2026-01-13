@@ -1,0 +1,7 @@
+models:
+  person_detector:
+    name: fake
+    num_detections: 2
+  tracker:
+    name: fake
+    start_id: 1

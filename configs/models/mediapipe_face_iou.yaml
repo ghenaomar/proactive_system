@@ -1,0 +1,17 @@
+models:
+  person_detector:
+    name: mediapipe_face
+    model_selection: 0
+    min_detection_confidence: 0.5
+    max_detections: 6
+    expand_x: 0.40
+    expand_up: 0.55
+    expand_down: 2.35
+    min_face_px: 18.0
+    # input_color: rgb
+
+  tracker:
+    name: iou
+    start_id: 1
+    iou_threshold: 0.3
+    max_age: 15

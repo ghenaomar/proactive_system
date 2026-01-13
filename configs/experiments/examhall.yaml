@@ -1,0 +1,20 @@
+exp_name: examhall
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/zones/examhall_px.yaml   # إذا ما عملت expanded حط examhall_px.yaml
+
+system:
+  max_frames: 900
+
+models:
+  person_detector:
+    name: torchvision
+    model: ssdlite320_mobilenet_v3_large
+    weights: DEFAULT
+    score_thresh: 0.35
+  tracker:
+    name: iou
+    iou_threshold: 0.25
+    max_age: 15

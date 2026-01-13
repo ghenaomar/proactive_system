@@ -1,0 +1,15 @@
+zones:
+  zones:
+    # Normalized bbox: [x1, y1, x2, y2] in [0..1]
+    - id: solo
+      bbox: [0.0, 0.0, 1.0, 1.0]
+
+# One student mapped to the single zone.
+students:
+  - id: me
+    zone_id: solo
+    name: "Me"
+
+meta:
+  frame_width: null
+  frame_height: null

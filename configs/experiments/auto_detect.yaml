@@ -1,0 +1,49 @@
+# Fully Automatic Detection - NO ZONES REQUIRED!
+#
+# This config uses YOLO + ByteTrack to automatically detect and track
+# every person. MediaPipe features are computed for each track directly.
+#
+# How it works:
+#   1. YOLO detects all persons
+#   2. ByteTrack assigns persistent track_id (1, 2, 3...)
+#   3. MediaPipe computes features for each tracked person
+#   4. Identity determined separately using InsightFace
+#
+# No manual zone drawing needed!
+
+exp_name: auto_detect
+
+includes:
+  - configs/system/default.yaml
+  - configs/system/logging.yaml
+  - configs/models/yolov8_bytetrack.yaml
+
+# IMPORTANT: Enable auto-tracking mode (no zones needed)
+auto_track_mode: true
+
+system:
+  max_frames: 600
+  assumed_fps: 30.0
+
+features:
+  mediapipe:
+    enabled: true
+    # Process every detected person (not just zones)
+    process_all_tracks: true
+    dynamic_roi: true
+    dynamic_roi_mode: upper_body
+    enable_head_turn: true
+    enable_pose_turn: true
+    min_face_px: 10.0
+    min_face_px_pose: 8.0
+    pose_yaw_scale: 1.0
+
+events:
+  presence:
+    emit_initial: true
+    enter_frames: 3
+    exit_frames: 10
+
+models:
+  person_detector:
+    score_thresh: 0.45

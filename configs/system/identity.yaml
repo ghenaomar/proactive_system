@@ -1,0 +1,55 @@
+# Identity Verification Configuration
+#
+# Settings for face-based identity verification during exams.
+# Uses InsightFace (ArcFace) for embedding extraction.
+
+identity:
+  # Enable/disable identity verification
+  enabled: true
+  
+  # Path to student database
+  database_path: data/students
+  
+  # Face embedder settings
+  embedder:
+    # InsightFace model pack
+    # Options: buffalo_l (recommended), buffalo_s (faster)
+    model_name: buffalo_l
+    
+    # Detection input size [width, height]
+    det_size: [640, 640]
+    
+    # Device: cuda, cpu, or auto
+    device: auto
+  
+  # Verification thresholds
+  # Higher = more strict, fewer false positives
+  # Lower = more lenient, fewer false negatives
+  
+  # High confidence match threshold (definitely same person)
+  high_threshold: 0.5
+  
+  # Low confidence match threshold (probably same person)
+  low_threshold: 0.35
+  
+  # Verification frequency
+  # How often to verify identity (in frames)
+  verify_interval: 150  # Every 6 seconds at 25 FPS
+  
+  # Initial verification
+  # Verify all students at the start of exam
+  verify_on_start: true
+  
+  # Alert settings
+  alerts:
+    # Alert on unknown person
+    unknown_person: true
+    
+    # Alert on wrong seat
+    wrong_seat: true
+    
+    # Alert on identity mismatch
+    identity_mismatch: true
+    
+    # Cooldown between repeated alerts (seconds)
+    cooldown_seconds: 30

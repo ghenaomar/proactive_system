@@ -1,0 +1,22 @@
+exp_name: exam_hall_mediapipe_turns
+includes:
+  - configs/experiments/exam_hall_mediapipe.yaml
+
+# Only override the MediaPipe head-turn settings for exam-hall videos.
+features:
+  mediapipe:
+    # Turn detection
+    enable_head_turn: true        # FaceMesh-based (when face is available)
+    enable_pose_turn: true        # Pose proxy fallback (when FaceMesh fails)
+
+    # Allow smaller faces (exam-hall / CCTV distances)
+    min_face_px: 12.0
+    min_face_px_pose: 8.0
+    pose_yaw_scale: 0.30
+    yaw_on: 0.10
+    yaw_full: 0.22
+
+    # Make ROI larger so Pose can detect (upper_body crops often kill Pose)
+    dynamic_roi_mode: full        # anything NOT in {upper_body, upper, head} => full tracker bbox
+    dynamic_roi_clip_to_zone: false
+    dynamic_roi_x_expand_frac: 0.15

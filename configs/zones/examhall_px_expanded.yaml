@@ -1,0 +1,63 @@
+meta:
+  source: data/raw/examhall.mp4
+  width: 960
+  height: 1080
+  zones: 7
+zones:
+- id: seat_1
+  bbox:
+  - 289
+  - 579
+  - 507
+  - 784
+- id: seat_2
+  bbox:
+  - 255
+  - 362
+  - 424
+  - 550
+- id: seat_3
+  bbox:
+  - 230
+  - 254
+  - 408
+  - 377
+- id: seat_4
+  bbox:
+  - 730
+  - 189
+  - 878
+  - 414
+- id: seat_5
+  bbox:
+  - 609
+  - 202
+  - 752
+  - 339
+- id: seat_6
+  bbox:
+  - 504
+  - 102
+  - 618
+  - 253
+- id: seat_7
+  bbox:
+  - 430
+  - 31
+  - 525
+  - 228
+students:
+- id: s1
+  zone_id: seat_1
+- id: s2
+  zone_id: seat_2
+- id: s3
+  zone_id: seat_3
+- id: s4
+  zone_id: seat_4
+- id: s5
+  zone_id: seat_5
+- id: s6
+  zone_id: seat_6
+- id: s7
+  zone_id: seat_7
